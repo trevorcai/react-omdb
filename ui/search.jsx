@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as Actions from './actions';
+import Textbox from './textbox';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class Search extends React.Component {
@@ -10,7 +11,7 @@ class Search extends React.Component {
     return (
       <div>
         <div>
-          Search titles: <input type="text" placeholder="Toy Story 3" />
+          Search titles: < Textbox />
         </div>
         <div className="button" onClick={() => search('tmp')}>
           FIND MY MOVIES!
