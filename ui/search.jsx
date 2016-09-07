@@ -4,31 +4,35 @@ import { bindActionCreators } from 'redux';
 import * as Actions from './actions';
 import Textbox from './textbox';
 
+const renderMovie = (movie, index) => (
+  <div key={index} className="moviebox">
+    <Link to={`/movies/${movie.imdbID}`}>
+      {`${movie.Title} (${movie.Year})`}
+    </Link>
+  </div>
+);
+
 const Search = (props) => {
-  const { search, movies, searchText } = props;
+  const { performSearch, movies, searchText } = props;
+  const renderMovies = () => movies.map(renderMovie);
+
   return (
     <div>
       <div>
-        Search titles: < Textbox />
+        Search titles: <Textbox />
       </div>
-      <div className="button" onClick={() => search(searchText)}>
+      <div className="button" onClick={() => performSearch(searchText)}>
         FIND MY MOVIES!
       </div>
       <div>
-        {movies.map((movie, index) => (
-          <div key={index} className="moviebox">
-            <Link to={`/movies/${movie.imdbID}`}>
-              {`${movie.Title} (${movie.Year})`}
-            </Link>
-          </div>
-        ))}
+        {renderMovies()}
       </div>
     </div>
   );
 };
 
 Search.propTypes = {
-  search: React.PropTypes.func,
+  performSearch: React.PropTypes.func,
   movies: React.PropTypes.array,
   searchText: React.PropTypes.string,
 };

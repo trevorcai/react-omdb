@@ -5,9 +5,9 @@ import { fetchMovies, fetchSingleMovie } from './omdb';
 function* sendSearch(searchText) {
   try {
     const movies = yield fetchMovies(searchText);
-    yield put({ type: 'SEARCH_COMPLETE', movies });
+    yield put({ type: types.SEARCH_COMPLETE, movies });
   } catch (error) {
-    yield put({ type: 'OMDB_API_FAILIURE', error });
+    yield put({ type: types.OMDB_API_FAILIURE, error });
   }
 }
 
@@ -22,9 +22,9 @@ export function* watchForSearch() {
 function* loadSingle(imdbId) {
   try {
     const movie = yield fetchSingleMovie(imdbId);
-    yield put({ type: 'FETCH_SINGLE_COMPLETE', movie });
+    yield put({ type: types.LOAD_SINGLE_COMPLETE, movie });
   } catch (error) {
-    yield put({ type: 'OMDB_API_FAILIURE', error });
+    yield put({ type: types.OMDB_API_FAILIURE, error });
   }
 }
 

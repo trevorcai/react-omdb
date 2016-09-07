@@ -6,6 +6,12 @@ import * as Actions from './actions';
 const nonTitleFields = ['Rated', 'Plot', 'Released', 'Runtime', 'Genre',
   'Director', 'Writer', 'Language', 'Awards'];
 
+const renderNonTitleFields = (movie) => (
+  nonTitleFields.map(field => (
+    <div key={field}>{field}: {movie[field]}</div>
+  ))
+);
+
 class MovieDisplay extends React.Component {
   componentDidMount() {
     this.props.loadSingle(this.props.params.movieId);
@@ -29,9 +35,7 @@ class MovieDisplay extends React.Component {
       <div>
         <img src={movie.Poster} alt="Movie Poster" />
         <div className="movie-title">Title: {movie.Title}</div>
-        {nonTitleFields.map(field => (
-          <div key={field}>{field}: {movie[field]}</div>
-        ))}
+        {renderNonTitleFields(movie)}
         <div>IMDb Rating: {movie.imdbRating}</div>
         {exitButton}
       </div>
