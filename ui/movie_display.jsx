@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import { bindActionCreators } from 'redux';
 import * as Actions from './actions';
 
@@ -15,8 +16,15 @@ class MovieDisplay extends React.Component {
   render() {
     // eslint-disable-next-line react/prop-types
     const { movie } = this.props;
+    const exitButton = <div><Link to="/">X</Link></div>;
+
     if (movie == null) {
-      return <div>Loading...</div>;
+      return (
+        <div>
+          <div>Loading...</div>
+          {exitButton}
+        </div>
+      );
     }
 
     return (
@@ -28,6 +36,7 @@ class MovieDisplay extends React.Component {
           <div key={field}>{field}: {movie[field]}</div>
         ))}
         <div>IMDb Rating: {movie.imdbRating}</div>
+        {exitButton}
       </div>
     );
   }
