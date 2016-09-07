@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import { bindActionCreators } from 'redux';
 import * as Actions from './actions';
 import Textbox from './textbox';
@@ -19,7 +20,9 @@ class Search extends React.Component {
         <div>
           {movies.map((movie, index) => (
             <div key={index} className="moviebox">
-              {`${movie.Title} (${movie.Year})`}
+              <Link to={`/movies/${movie.imdbID}`}>
+                {`${movie.Title} (${movie.Year})`}
+              </Link>
             </div>
           ))}
         </div>

@@ -1,6 +1,6 @@
 import { put, take, fork } from 'redux-saga/effects';
 import * as types from './actions';
-import { fetchMovies } from './omdb';
+import { fetchMovies, fetchSingleMovie } from './omdb';
 
 function* sendSearch(searchText) {
   try {
@@ -11,11 +11,27 @@ function* sendSearch(searchText) {
   }
 }
 
-// eslint-disable-next-line import/prefer-default-export
 export function* watchForSearch() {
   // eslint-disable-next-line no-constant-condition
   while (true) {
     const action = yield take(types.PERFORM_SEARCH);
     yield fork(sendSearch, action.searchText);
+  }
+}
+
+function* loadSingle(imdbId) {
+  try {
+    const movie = yield fetchSingleMovie(imdbId);
+    yield put({ type: 'FETCH_SINGLE_COMPLETE', movie });
+  } catch (error) {
+    yield put({ type: 'OMDB_API_FAILIURE', error });
+  }
+}
+
+export function* watchForLoadSingle() {
+  // eslint-disable-next-line no-constant-condition
+  while (true) {
+    const action = yield take(types.LOAD_SINGLE);
+    yield fork(loadSingle, action.imdbId);
   }
 }
