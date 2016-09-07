@@ -1,9 +1,10 @@
 export const PERFORM_SEARCH = 'PERFORM_SEARCH';
 export const UPDATE_TEXT = 'UPDATE_TEXT';
 
-export function search() {
+export function search(searchText) {
   return {
     type: PERFORM_SEARCH,
+    searchText,
   };
 }
 

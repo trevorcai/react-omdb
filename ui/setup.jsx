@@ -1,15 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import createSagaMiddleware from 'redux-saga';
 import reducer from './reducer';
+import { watchForSearch } from './sagas';
 
 // eslint-disable-next-line no-undef
 window.React = React;
 
-const store = createStore(reducer);
-const setup = {};
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(reducer, applyMiddleware(sagaMiddleware));
+sagaMiddleware.run(watchForSearch);
 
+const setup = {};
 setup.render = function render(Component) {
   ReactDOM.render(
     <Provider store={store}>
