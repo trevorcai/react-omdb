@@ -6,15 +6,12 @@ import * as Actions from './actions';
 const nonTitleFields = ['Rated', 'Plot', 'Released', 'Runtime', 'Genre',
   'Director', 'Writer', 'Language', 'Awards'];
 
-// eslint-disable-next-line react/prefer-stateless-function
 class MovieDisplay extends React.Component {
   componentDidMount() {
-    // eslint-disable-next-line react/prop-types
     this.props.loadSingle(this.props.params.movieId);
   }
 
   render() {
-    // eslint-disable-next-line react/prop-types
     const { movie } = this.props;
     const exitButton = <div><Link to="/">X</Link></div>;
 
@@ -41,6 +38,12 @@ class MovieDisplay extends React.Component {
     );
   }
 }
+
+MovieDisplay.propTypes = {
+  loadSingle: React.PropTypes.func,
+  params: React.PropTypes.object,
+  movie: React.PropTypes.object,
+};
 
 function mapStateToProps(state) {
   return {

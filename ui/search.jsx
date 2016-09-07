@@ -4,31 +4,34 @@ import { bindActionCreators } from 'redux';
 import * as Actions from './actions';
 import Textbox from './textbox';
 
-// eslint-disable-next-line react/prefer-stateless-function
-class Search extends React.Component {
-  render() {
-    // eslint-disable-next-line react/prop-types
-    const { search, movies, searchText } = this.props;
-    return (
+const Search = (props) => {
+  const { search, movies, searchText } = props;
+  return (
+    <div>
       <div>
-        <div>
-          Search titles: < Textbox />
-        </div>
-        <div className="button" onClick={() => search(searchText)}>
-          FIND MY MOVIES!
-        </div>
-        <div>
-          {movies.map((movie, index) => (
-            <div key={index} className="moviebox">
-              <Link to={`/movies/${movie.imdbID}`}>
-                {`${movie.Title} (${movie.Year})`}
-              </Link>
-            </div>
-          ))}
-        </div>
-      </div>);
-  }
-}
+        Search titles: < Textbox />
+      </div>
+      <div className="button" onClick={() => search(searchText)}>
+        FIND MY MOVIES!
+      </div>
+      <div>
+        {movies.map((movie, index) => (
+          <div key={index} className="moviebox">
+            <Link to={`/movies/${movie.imdbID}`}>
+              {`${movie.Title} (${movie.Year})`}
+            </Link>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+Search.propTypes = {
+  search: React.PropTypes.func,
+  movies: React.PropTypes.array,
+  searchText: React.PropTypes.string,
+};
 
 function mapStateToProps(state) {
   return {
