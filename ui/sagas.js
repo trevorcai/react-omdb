@@ -1,5 +1,5 @@
 import { put, take, fork } from 'redux-saga/effects';
-import * as types from './actions';
+import * as types from './types';
 import { fetchMovies, fetchSingleMovie } from './omdb';
 
 function* sendSearch(searchText) {
