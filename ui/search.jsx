@@ -21,9 +21,9 @@ const Search = (props) => {
       <div>
         Search titles: <Textbox />
       </div>
-      <div className="button" onClick={() => performSearch(searchText)}>
+      <button onClick={() => performSearch(searchText)}>
         FIND MY MOVIES!
-      </div>
+      </button>
       <div>
         {renderMovies()}
       </div>

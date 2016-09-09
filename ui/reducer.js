@@ -14,6 +14,9 @@ export default function reducer(state = defaultState, action) {
       return { ...state, movies: action.movies };
     case types.LOAD_SINGLE_COMPLETE:
       return { ...state, selectedMovie: action.movie };
+    case types.PERFORM_SEARCH:
+      // Clear the search while a new one is running.
+      return {...state, movies: [], selectedMovie: null};
     default:
       return state;
   }
