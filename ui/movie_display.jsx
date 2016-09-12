@@ -51,7 +51,7 @@ MovieDisplay.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    movie: state.selectedMovie,
+    movie: state.get('selectedMovie', null),
   };
 }
 

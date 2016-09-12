@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { bindActionCreators } from 'redux';
+import Immutable from 'immutable';
 import * as Actions from './actions';
 import Textbox from './textbox';
 
@@ -33,14 +34,14 @@ const Search = (props) => {
 
 Search.propTypes = {
   performSearch: React.PropTypes.func,
-  movies: React.PropTypes.array,
+  movies: React.PropTypes.instanceOf(Immutable.List),
   searchText: React.PropTypes.string,
 };
 
 function mapStateToProps(state) {
   return {
-    searchText: state.searchText,
-    movies: state.movies,
+    searchText: state.get('searchText', ''),
+    movies: state.get('movies', Immutable.List.of()),
   };
 }
 

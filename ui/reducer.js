@@ -1,22 +1,22 @@
+import Immutable from 'immutable';
 import * as types from './types';
 
-const defaultState = {
+const defaultState = new Immutable.Map({
   searchText: '',
-  movies: [],
-  selectedMovie: null,
-};
+  movies: Immutable.List.of(),
+});
 
 export default function reducer(state = defaultState, action) {
   switch (action.type) {
     case types.UPDATE_TEXT:
-      return { ...state, searchText: action.text };
+      return state.set('searchText', action.text);
     case types.SEARCH_COMPLETE:
-      return { ...state, movies: action.movies };
+      return state.set('movies', new Immutable.List(action.movies));
     case types.LOAD_SINGLE_COMPLETE:
-      return { ...state, selectedMovie: action.movie };
+      return state.set('selectedMovie', action.movie);
     case types.PERFORM_SEARCH:
       // Clear the search while a new one is running.
-      return {...state, movies: [], selectedMovie: null};
+      return state.delete('selectedMovie').set('movies', Immutable.List.of());
     default:
       return state;
   }

@@ -20,7 +20,7 @@ Textbox.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    searchText: state.searchText,
+    searchText: state.get('searchText', ''),
   };
 }
 
