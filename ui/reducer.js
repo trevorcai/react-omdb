@@ -3,7 +3,7 @@ import * as types from './types';
 
 const defaultState = new Immutable.Map({
   searchText: '',
-  movies: Immutable.List.of(),
+  movies: new Immutable.List(),
 });
 
 export default function reducer(state = defaultState, action) {
@@ -16,7 +16,7 @@ export default function reducer(state = defaultState, action) {
       return state.set('selectedMovie', action.movie);
     case types.PERFORM_SEARCH:
       // Clear the search while a new one is running.
-      return state.delete('selectedMovie').set('movies', Immutable.List.of());
+      return state.delete('selectedMovie').set('movies', new Immutable.List());
     default:
       return state;
   }

@@ -10,7 +10,8 @@ module.exports = {
       'react-redux',
       'react-router',
       'redux',
-      'redux-saga'
+      'redux-saga',
+      'immutable'
     ]
   },
   output: {

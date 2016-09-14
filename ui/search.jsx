@@ -41,7 +41,7 @@ Search.propTypes = {
 function mapStateToProps(state) {
   return {
     searchText: state.get('searchText', ''),
-    movies: state.get('movies', Immutable.List.of()),
+    movies: state.get('movies', new Immutable.List()),
   };
 }
 
