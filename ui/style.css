@@ -1,0 +1,28 @@
+.closeButton {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  font-size: 200%;
+}
+
+.moviebox {
+  border: 1px solid lightgray;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.movieField {
+  padding-bottom: 5px;
+}
+
+.searchBar {
+  text-align: center;
+}
+
+.searchBar button {
+  background: white;
+  border: 1px solid lightgray;
+  padding: 5px 20px 5px 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}

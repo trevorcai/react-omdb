@@ -8,7 +8,7 @@ const nonTitleFields = ['Rated', 'Plot', 'Released', 'Runtime', 'Genre',
 
 const renderNonTitleFields = (movie) => (
   nonTitleFields.map(field => (
-    <div key={field}>{field}: {movie[field]}</div>
+    <div key={field} className="movieField">{field}: {movie[field]}</div>
   ))
 );
 
@@ -19,7 +19,7 @@ class MovieDisplay extends React.Component {
 
   render() {
     const { movie } = this.props;
-    const exitButton = <div><Link to="/">X</Link></div>;
+    const exitButton = <div className="closeButton"><Link to="/">X</Link></div>;
 
     if (movie == null) {
       return (
@@ -34,9 +34,9 @@ class MovieDisplay extends React.Component {
       // TODO: Error handling for nonexistent imdbIds
       <div>
         <img src={movie.Poster} alt="Movie Poster" />
-        <div className="movie-title">Title: {movie.Title}</div>
+        <div className="movie-title"><h2>Title: {movie.Title}</h2></div>
         {renderNonTitleFields(movie)}
-        <div>IMDb Rating: {movie.imdbRating}</div>
+        <div className="movieField">IMDb Rating: {movie.imdbRating}</div>
         {exitButton}
       </div>
     );

@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { bindActionCreators } from 'redux';
 import Immutable from 'immutable';
+import './style.css';
 import * as Actions from './actions';
 import Textbox from './textbox';
 
@@ -19,12 +20,12 @@ const Search = (props) => {
 
   return (
     <div>
-      <div>
-        Search titles: <Textbox />
+      <div className="searchBar">
+        <div>Search titles: <Textbox /></div>
+        <button onClick={() => performSearch(searchText)}>
+          FIND MY MOVIES!
+        </button>
       </div>
-      <button onClick={() => performSearch(searchText)}>
-        FIND MY MOVIES!
-      </button>
       <div>
         {renderMovies()}
       </div>
