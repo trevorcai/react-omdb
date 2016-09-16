@@ -26,7 +26,7 @@ const Search = (props) => {
           FIND MY MOVIES!
         </button>
       </div>
-      <div>
+      <div className="searchResults">
         {renderMovies()}
       </div>
     </div>

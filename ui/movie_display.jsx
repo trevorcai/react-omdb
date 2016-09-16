@@ -32,11 +32,13 @@ class MovieDisplay extends React.Component {
 
     return (
       // TODO: Error handling for nonexistent imdbIds
-      <div>
+      <div className="movieDisplay">
         <img src={movie.Poster} alt="Movie Poster" />
-        <div className="movie-title"><h2>Title: {movie.Title}</h2></div>
-        {renderNonTitleFields(movie)}
-        <div className="movieField">IMDb Rating: {movie.imdbRating}</div>
+        <div className="movieDescription">
+          <div><h2>Title: {movie.Title}</h2></div>
+          {renderNonTitleFields(movie)}
+          <div className="movieField">IMDb Rating: {movie.imdbRating}</div>
+        </div>
         {exitButton}
       </div>
     );
